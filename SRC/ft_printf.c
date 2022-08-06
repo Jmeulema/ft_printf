@@ -6,31 +6,31 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:50:37 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/08/06 18:01:38 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/08/06 20:17:06 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/ft_printf.h"
 
-int	ft_check_conv(va_list args, const char format)
+static int	ft_check_conv(va_list args, const char format)
 {
 	int	len;
 
 	len = 0;
 	if (format == 'c')
-		len += ft_putchar(va_arg, (args, int));
+		len += ft_putchar(va_arg(args, int));
 	else if (format == 's')
-		len += ft_printstr(va_arg, (args, char *));
+		len += ft_printstr(va_arg(args, char *));
 	else if (format == 'p')
-		len += ft_printptr(var arg, (args, unsigned long));
+		len += ft_printptr(va_arg(args, unsigned long));
 	else if (format == 'u')
-		len += ft_print_unsigned(va arg, (args, unsigned int));
-	else if (format == 'd' || c == 'i')
-		len += ft_printnbr(va arg, (args, int));
-	else if (format == 'x' || c == 'X')
-		len += ft_print_hex(va arg, (args, unsigned int), format);
+		len += ft_print_unsigned(va_arg(args, unsigned int));
+	else if (format == 'd' || format == 'i')
+		len += ft_printnbr(va_arg(args, int));
+	else if (format == 'x' || format == 'X')
+		len += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		len += ft_puthchar(va arg, (args, int));
+		len += write(1, "%", 1);
 	return (len);
 }
 

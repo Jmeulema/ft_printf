@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 14:35:32 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/08/06 15:18:19 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:46:09 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_printnbr(int nbr)
 	char	*nb;
 
 	nb = ft_itoa(nbr);
-	len = ft_prinstr(nb);
+	len = ft_printstr(nb);
 	free(nb);
 	return (len);
 }

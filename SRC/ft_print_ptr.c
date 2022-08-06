@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 16:36:30 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/08/06 19:50:22 by jmeulema         ###   ########.fr       */
+/*   Created: 2022/08/06 18:58:06 by jmeulema          #+#    #+#             */
+/*   Updated: 2022/08/06 19:49:32 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/ft_printf.h"
 
-static int	ft_hexa_len(unsigned int nb)
+static int	ft_len_ptr(unsigned long nb)
 {
 	int	len;
 
 	len = 0;
-	if (nb == 0)
-		return (1);
 	while (nb != 0)
 	{
 		nb /= 16;
@@ -27,32 +25,32 @@ static int	ft_hexa_len(unsigned int nb)
 	return (len);
 }
 
-static void	ft_put_hexa(unsigned int nb, const char format)
+static void	ft_putptr(unsigned long nb)
 {
 	if (nb >= 16)
 	{
-		ft_put_hexa(nb / 16, format);
-		ft_put_hexa(nb % 16, format);
+		ft_putptr(nb / 16);
+		ft_putptr(nb % 16);
 	}
 	else
 	{
 		if (nb <= 9)
 			ft_putchar(nb + '0');
 		else
-		{
-			if (format == 'x')
-				ft_putchar(nb - 10 + 'a');
-			if (format == 'X')
-				ft_putchar(nb - 10 + 'A');
-		}
+			ft_putchar(nb - 10 + 'a');
 	}
 }
 
-int	ft_print_hex(unsigned int nb, const char format)
+int	ft_printptr(unsigned long nb)
 {
+	int	len;
+
+	len = 2;
+	write(1, "0x", 2);
 	if (nb == 0)
-		write (1, "0", 1);
+		len += write(1, "0", 1);
 	else
-		ft_put_hexa(nb, format);
-	return (ft_hexa_len(nb));
+		ft_putptr(nb);
+		len += ft_len_ptr(nb);
+	return (len);
 }
