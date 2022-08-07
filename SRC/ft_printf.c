@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 11:50:37 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/08/06 20:17:06 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:38:13 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static int	ft_check_conv(va_list args, const char format)
 	else if (format == 'd' || format == 'i')
 		len += ft_printnbr(va_arg(args, int));
 	else if (format == 'x' || format == 'X')
-		len += ft_print_hex(va_arg(args, unsigned int), format);
+		len += ft_print_hexa(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		len += write(1, "%", 1);
+		len += ft_putchar('%');
 	return (len);
 }
 
@@ -55,5 +55,5 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end (args);
-	return (i);
+	return (len);
 }

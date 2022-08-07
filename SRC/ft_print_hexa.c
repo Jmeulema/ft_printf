@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:36:30 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/08/06 19:50:22 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/08/07 13:42:23 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_put_hexa(unsigned int nb, const char format)
 	}
 }
 
-int	ft_print_hex(unsigned int nb, const char format)
+int	ft_print_hexa(unsigned int nb, const char format)
 {
 	if (nb == 0)
 		write (1, "0", 1);
